@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stock in finalStockList %}
+    <tr>
+      <td>{{ stock['symbol'] }}</td>
+      <td>{{ stock['name'] }}</td>
+      <td>{{ stock['shares'] }}</td>
+      <td>{{ "${:,.2f}".format(stock['price']) }}</td>
+      <td>{{ "${:,.2f}".format(stock['total']) }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>CASH</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ "${:,.2f}".format(actualCash) }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td id="grandTotal">{{ "${:,.2f}".format(grandTotal) }}</td>
+  </tbody>
+</table>
+
+{% endblock %}
